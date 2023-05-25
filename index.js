@@ -1,21 +1,13 @@
+require('dotenv').config();
 const express = require('express');
-const knex = require('knex');
+const knex = require('./service/knex');
 
 const app = express();
 
 app.use(express.json());
 
 app.get('/user', async (req, res) => {
-    const users = await knex({
-        client: 'mysql',
-        connection: {
-            host : '127.0.0.1',
-            port : 3306,
-            user : 'user',
-            password : 'password',
-            database : 'gabarito_db',
-        }
-    })('users').select();
+    const users = await knex('users').select();
 
     return res.status(200).json({
         message: 'ok',
@@ -24,16 +16,7 @@ app.get('/user', async (req, res) => {
 });
 
 app.get('/user/:id', async (req, res) => {
-    const user = await knex({
-        client: 'mysql',
-        connection: {
-            host : '127.0.0.1',
-            port : 3306,
-            user : 'user',
-            password : 'password',
-            database : 'gabarito_db',
-        }
-    })('users').select().where({ id: req.params.id }).first();
+    const user = await knex('users').select().where({ id: req.params.id }).first();
 
     return res.status(200).json({
         message: 'ok',
@@ -42,16 +25,7 @@ app.get('/user/:id', async (req, res) => {
 });
 
 app.post('/user', async (req, res) => {
-    await knex({
-        client: 'mysql',
-        connection: {
-            host : '127.0.0.1',
-            port : 3306,
-            user : 'user',
-            password : 'password',
-            database : 'gabarito_db',
-        }
-    })('users').insert({
+    await knex('users').insert({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
@@ -65,16 +39,7 @@ app.post('/user', async (req, res) => {
 });
 
 app.put('/user/:id', async (req, res) => {
-    await knex({
-        client: 'mysql',
-        connection: {
-            host : '127.0.0.1',
-            port : 3306,
-            user : 'user',
-            password : 'password',
-            database : 'gabarito_db',
-        }
-    })('users').update({
+    await knex('users').update({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
@@ -88,16 +53,7 @@ app.put('/user/:id', async (req, res) => {
 });
 
 app.delete('/user/:id', async (req, res) => {
-    await knex({
-        client: 'mysql',
-        connection: {
-            host : '127.0.0.1',
-            port : 3306,
-            user : 'user',
-            password : 'password',
-            database : 'gabarito_db',
-        }
-    })('users').delete().where({ id: req.params.id });
+    await knex('users').delete().where({ id: req.params.id });
 
     return res.status(200).json({
         message: 'ok',
