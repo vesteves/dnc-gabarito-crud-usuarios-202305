@@ -6,11 +6,15 @@
   "author": "Vitor Esteves <vitordasilvaesteves@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "knex:up": "knex migrate:up",
+    "knex:down": "knex migrate:down",
+    "knex:latest": "knex migrate:latest"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "joi": "^17.9.2",
     "knex": "^2.4.2",
     "mysql": "^2.18.1"
   }

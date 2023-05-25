@@ -1,5 +1,5 @@
 require('dotenv').config();
-const database = require('./config/database');
+const database = require('./src/config/database');
 // Update with your config settings.
 
 /**
