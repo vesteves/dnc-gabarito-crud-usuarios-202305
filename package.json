@@ -1,0 +1,8 @@
+{
+  "name": "gabarito-crud-usuarios",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vesteves/dnc-gabarito-crud-usuarios-202305.git",
+  "author": "Vitor Esteves <vitordasilvaesteves@gmail.com>",
+  "license": "MIT"
+}
